@@ -907,6 +907,55 @@ export const ordersGrid = [
     width: "120",
   },
   {
+    field: "productId",
+    headerText: "Item id",
+    width: "150",
+    editType: "dropdownedit",
+    textAlign: "Center",
+  },
+  {
+    field: "firstName",
+    headerText: "Customer Name",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    field: "price",
+    headerText: "Total Amount",
+    format: "C2",
+    textAlign: "Center",
+    editType: "numericedit",
+    width: "150",
+  },
+  {
+    headerText: "status",
+    // template: gridOrderStatus,
+    field: "status",
+    textAlign: "Center",
+    width: "120",
+  },
+  {
+    field: "_id",
+    headerText: "Order ID",
+    width: "120",
+    textAlign: "Center",
+  },
+
+  {
+    field: "phoneNumber",
+    headerText: "phoneNumber",
+    width: "150",
+    textAlign: "Center",
+  },
+];
+export const productsGrid = [
+  {
+    headerText: "Image",
+    template: gridOrderImage,
+    textAlign: "Center",
+    width: "120",
+  },
+  {
     field: "_id",
     headerText: "Item id",
     width: "150",
@@ -935,15 +984,15 @@ export const ordersGrid = [
     width: "120",
   },
   {
-    field: "OrderID",
-    headerText: "Order ID",
+    field: "userId",
+    headerText: "User ID",
     width: "120",
     textAlign: "Center",
   },
 
   {
-    field: "about",
-    headerText: "about",
+    field: "price",
+    headerText: "price",
     width: "150",
     textAlign: "Center",
   },
