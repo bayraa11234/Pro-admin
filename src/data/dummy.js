@@ -43,14 +43,20 @@ import product5 from "./product5.jpg";
 import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
 import product8 from "./product8.jpg";
+import moment from "moment";
 
 export const gridOrderImage = (props) => (
-  <div>
+  <div className="flex justify-center">
     <img
-      className="rounded-xl h-20 md:ml-3 w-30 object-cover"
+      className="rounded-xl h-20 md:ml-3 w-30 object-cover w-20"
       src={props.productImageSrc}
       alt="order-item"
     />
+  </div>
+);
+export const gridOrderCreated = (props) => (
+  <div className="flex justify-center">
+    {moment(props.createdAt).fromNow(true)} ago
   </div>
 );
 
@@ -61,7 +67,6 @@ export const gridOrderStatus = (props) => (
     className="text-white py-1 px-2 capitalize rounded-2xl text-md"
   >
     {props.status}
-    {/* {moment(order.createdAt).fromNow(true)} ago */}
   </button>
 );
 
@@ -143,28 +148,31 @@ export const EditorData = () => (
   </div>
 );
 const customerGridImage = (props) => (
-  <div className="image flex gap-4">
+  <div className="image flex gap-4 items-center">
     <img
       className="rounded-full w-10 h-10"
-      src={props.CustomerImage}
+      src={
+        props.profileImage ||
+        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      }
       alt="employee"
     />
     <div>
-      <p>{props.CustomerName}</p>
-      <p>{props.CustomerEmail}</p>
+      {/* <p>{props.name}</p> */}
+      <p>{props.email}</p>
     </div>
   </div>
 );
 
-const customerGridStatus = (props) => (
-  <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p
-      style={{ background: props.StatusBg }}
-      className="rounded-full h-3 w-3"
-    />
-    <p>{props.Status}</p>
-  </div>
-);
+// const customerGridStatus = (props) => (
+//   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
+//     <p
+//       style={{ background: props.StatusBg }}
+//       className="rounded-full h-3 w-3"
+//     />
+//     <p>{props.Status}</p>
+//   </div>
+// );
 export const areaPrimaryXAxis = {
   valueType: "DateTime",
   labelFormat: "y",
@@ -423,44 +431,44 @@ export const customersGrid = [
     textAlign: "Center",
   },
   {
-    field: "ProjectName",
-    headerText: "Project Name",
-    width: "150",
-    textAlign: "Center",
-  },
-  {
-    field: "Status",
-    headerText: "Status",
-    width: "130",
-    format: "yMd",
-    textAlign: "Center",
-    template: customerGridStatus,
-  },
-  {
-    field: "Weeks",
-    headerText: "Weeks",
-    width: "100",
-    format: "C2",
-    textAlign: "Center",
-  },
-  {
-    field: "Budget",
-    headerText: "Budget",
-    width: "100",
-    format: "yMd",
-    textAlign: "Center",
-  },
-
-  {
-    field: "Location",
-    headerText: "Location",
-    width: "150",
-    textAlign: "Center",
-  },
-
-  {
-    field: "CustomerID",
+    field: "_id",
     headerText: "Customer ID",
+    width: "150",
+    textAlign: "Center",
+  },
+  // {
+  //   field: "Status",
+  //   headerText: "Status",
+  //   width: "130",
+  //   format: "yMd",
+  //   textAlign: "Center",
+  //   template: customerGridStatus,
+  // },
+  // {
+  //   field: "Weeks",
+  //   headerText: "Weeks",
+  //   width: "100",
+  //   format: "C2",
+  //   textAlign: "Center",
+  // },
+  {
+    field: "name",
+    headerText: "name",
+    width: "100",
+    format: "yMd",
+    textAlign: "Center",
+  },
+
+  {
+    field: "product count",
+    headerText: "product count",
+    width: "150",
+    textAlign: "Center",
+  },
+
+  {
+    field: "phoneNumber",
+    headerText: "phoneNumber ",
     width: "120",
     textAlign: "Center",
     isPrimaryKey: true,
@@ -969,8 +977,9 @@ export const productsGrid = [
     textAlign: "Center",
   },
   {
-    field: "price",
-    headerText: "Total Amount",
+    field: "createdAt",
+    template: gridOrderCreated,
+    headerText: "createdAt",
     format: "C2",
     textAlign: "Center",
     editType: "numericedit",

@@ -26,6 +26,7 @@ import "./App.css";
 
 import { useStateContext } from "./contexts/ContextProvider";
 import Products from "./pages/Products";
+import Add from "./pages/Add";
 
 const App = () => {
   const {
@@ -95,6 +96,7 @@ const App = () => {
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/products/add" element={<Add />} />
 
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />

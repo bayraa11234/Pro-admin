@@ -16,34 +16,23 @@ import {
 
 import { ordersData, contextMenuItems, productsGrid } from "../data/dummy";
 import { Header } from "../components";
-import axios from "axios";
+import { useCrud } from "../hooks/useCrud";
+import { Link } from "react-router-dom";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/products/true/true")
-      .then((response) => {
-        setProducts(response.data);
-        // CustomerName: "ob";
-        // Location: "USA";
-        // OrderID: 1;
-        // OrderItems: "rock crawler";
-        // ProductImage: "/static/media/product6.3260a3b510aa12fc136b.jpg";
-        // Status: "true";
-        // StatusBg: "#FB9678";
-        // TotalAmount: 10;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [products]);
+  const { items: products } = useCrud("products/true/true");
 
   const editing = { allowDeleting: true, allowEditing: true };
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Products" />
+      <div className="flex items-center justify-between">
+        <Header category="Page" title="Products" />
+        <Link to="/products/add">
+          <button className="bg-[rgba(25,100,255,7)] text-white rounded-lg py-2 px-6">
+            add
+          </button>
+        </Link>
+      </div>
       <GridComponent
         id="gridcomp"
         dataSource={products}
